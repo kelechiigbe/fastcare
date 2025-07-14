@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fast-Care | Premium Telemedicine Experience</title>
+    <title>Fast-Care | Complete Telemedicine Solution for Patients & Doctors</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,8 @@
             --primary-dark: #004d99;
             --secondary: #ff6b6b;
             --accent: #00cc99;
+            --doctor: #6a5acd; /* New doctor app color */
+            --patient: #00b894; /* New patient app color */
             --dark: #1a1a2e;
             --light: #f8f9ff;
             --gray: #e6e6e6;
@@ -22,6 +24,8 @@
             --text-light: #666680;
             --white: #ffffff;
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --doctor-gradient: linear-gradient(135deg, var(--doctor) 0%, #9370db 100%);
+            --patient-gradient: linear-gradient(135deg, var(--patient) 0%, #55efc4 100%);
             --shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -175,6 +179,28 @@
             box-shadow: 0 15px 30px rgba(0, 102, 204, 0.4);
         }
         
+        .btn-doctor {
+            background: var(--doctor-gradient);
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(106, 90, 205, 0.3);
+        }
+        
+        .btn-doctor:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(106, 90, 205, 0.4);
+        }
+        
+        .btn-patient {
+            background: var(--patient-gradient);
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(0, 184, 148, 0.3);
+        }
+        
+        .btn-patient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 184, 148, 0.4);
+        }
+        
         .btn-secondary {
             background: transparent;
             color: var(--primary);
@@ -245,6 +271,7 @@
         .hero-actions {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
         
         .hero-stats {
@@ -299,6 +326,200 @@
             bottom: 50px;
             right: 50px;
             animation: pulse 6s infinite alternate-reverse;
+        }
+        
+        /* App Showcase Section */
+        .app-showcase {
+            padding: 120px 0;
+            background: var(--white);
+        }
+        
+        .app-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            gap: 10px;
+        }
+        
+        .app-tab {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .app-tab.active {
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+        
+        .app-tab-patient {
+            color: var(--patient);
+            border-color: var(--patient);
+        }
+        
+        .app-tab-patient.active {
+            background: var(--patient-gradient);
+            color: var(--white);
+            border-color: transparent;
+        }
+        
+        .app-tab-doctor {
+            color: var(--doctor);
+            border-color: var(--doctor);
+        }
+        
+        .app-tab-doctor.active {
+            background: var(--doctor-gradient);
+            color: var(--white);
+            border-color: transparent;
+        }
+        
+        .app-content {
+            display: none;
+        }
+        
+        .app-content.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .app-feature {
+            padding: 30px;
+            border-radius: 16px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .app-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .app-feature:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .app-feature:hover::before {
+            opacity: 1;
+        }
+        
+        .app-feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-size: 24px;
+        }
+        
+        .patient-feature .app-feature-icon {
+            background: var(--patient-gradient);
+            box-shadow: 0 10px 20px rgba(0, 184, 148, 0.3);
+        }
+        
+        .doctor-feature .app-feature-icon {
+            background: var(--doctor-gradient);
+            box-shadow: 0 10px 20px rgba(106, 90, 205, 0.3);
+        }
+        
+        .app-feature h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .app-feature p {
+            color: var(--text-light);
+        }
+        
+        /* Dual Phone Mockup */
+        .dual-mockup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+        }
+        
+        .phone-mockup-container {
+            position: relative;
+            width: 280px;
+            perspective: 1000px;
+        }
+        
+        .patient-mockup {
+            transform: rotateY(-15deg) rotateX(5deg);
+            animation: pulse-scale 8s ease-in-out infinite;
+        }
+        
+        .doctor-mockup {
+            transform: rotateY(15deg) rotateX(5deg);
+            animation: pulse-scale 8s ease-in-out infinite 1s;
+        }
+        
+        .phone-mockup {
+            position: relative;
+            width: 100%;
+            height: 560px;
+            background: #fff;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            padding: 15px;
+            z-index: 2;
+            transform-style: preserve-3d;
+        }
+        
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #f8f9ff;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .screenshot-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .screenshot {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transform: translateZ(20px);
+        }
+        
+        .screenshot.active {
+            opacity: 1;
         }
         
         /* Features Section */
@@ -775,57 +996,6 @@
             100% { transform: scale(1); }
         }
 
-        /* Enhanced Phone Mockup Styles */
-        .phone-mockup-container {
-            position: relative;
-            width: 300px;
-            margin: 0 auto;
-            perspective: 1000px;
-        }
-
-        .phone-mockup {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            background: #fff;
-            border-radius: 40px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            z-index: 2;
-            transform-style: preserve-3d;
-            transform: rotateY(-10deg) rotateX(5deg);
-            animation: pulse-scale 8s ease-in-out infinite;
-        }
-
-        .screen {
-            width: 100%;
-            height: 100%;
-            background: #f8f9ff;
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .screenshot-carousel {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .screenshot {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-            transform: translateZ(20px);
-        }
-
-        .screenshot.active {
-            opacity: 1;
-        }
-
         /* Enhanced Floating Cards */
         .floating-card {
             position: absolute;
@@ -1019,6 +1189,10 @@
             .phone-mockup {
                 transform: none;
             }
+
+            .dual-mockup {
+                flex-direction: column;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1061,6 +1235,11 @@
             .floating-card-2 {
                 display: none;
             }
+
+            .app-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1099,6 +1278,14 @@
             .floating-card-1 {
                 right: -30px;
             }
+
+            .phone-mockup-container {
+                width: 240px;
+            }
+
+            .phone-mockup {
+                height: 480px;
+            }
         }
     </style>
 </head>
@@ -1113,8 +1300,8 @@
             <nav>
                 <ul>
                     <li><a href="#features">Features</a></li>
+                    <li><a href="#apps">Our Apps</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1132,24 +1319,25 @@
     <section class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Premium Healthcare <span>At Your Fingertips</span></h1>
-                <p class="hero-text">Experience the future of medicine with Fast-Care's telemedicine platform. Connect with top doctors instantly, get prescriptions delivered, and manage your health - all from your smartphone.</p>
+                <h1 class="hero-title">Complete Healthcare <span>For Everyone</span></h1>
+                <p class="hero-text">Fast-Care revolutionizes healthcare with our dual-platform solution. Patients get premium telemedicine services while doctors gain powerful tools to deliver exceptional care - all in one ecosystem.</p>
                 <div class="hero-actions">
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                    <a href="#" class="btn btn-secondary">Learn More</a>
+                    <a href="#apps" class="btn btn-patient">Patient App</a>
+                    <a href="#apps" class="btn btn-doctor">Doctor App</a>
+                    <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">10K+</div>
+                        <div class="stat-number">50K+</div>
                         <div class="stat-label">Happy Patients</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">200+</div>
+                        <div class="stat-number">1K+</div>
                         <div class="stat-label">Expert Doctors</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Availability</div>
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
                     </div>
                 </div>
             </div>
@@ -1160,7 +1348,7 @@
                             <div class="screenshot-carousel">
                                 <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fast-Care Dashboard" class="screenshot active">
                                 <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fast-Care Consultation" class="screenshot">
-                                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fast-Care Profile" class="screenshot">
+                                <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1582&q=80" alt="Fast-Care Profile" class="screenshot">
                             </div>
                         </div>
                     </div>
@@ -1196,55 +1384,192 @@
         </div>
     </section>
 
+    <!-- App Showcase Section -->
+    <section class="app-showcase" id="apps">
+        <div class="container">
+            <div class="section-title">
+                <h2>Two Powerful Apps, One Complete Solution</h2>
+                <p>Fast-Care provides specialized applications for both patients and healthcare providers, creating a seamless healthcare ecosystem</p>
+            </div>
+            
+            <div class="app-tabs">
+                <div class="app-tab app-tab-patient active" data-tab="patient">Patient App</div>
+                <div class="app-tab app-tab-doctor" data-tab="doctor">Doctor App</div>
+            </div>
+            
+            <div class="app-content patient-content active">
+                <div class="app-features">
+                    <div class="app-feature patient-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-hospital-user"></i>
+                        </div>
+                        <h3>Hospital Registration</h3>
+                        <p>Register with any hospital from the comfort of your home, saving time and reducing paperwork.</p>
+                    </div>
+                    <div class="app-feature patient-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-comment-medical"></i>
+                        </div>
+                        <h3>Virtual & Physical Consultations</h3>
+                        <p>Choose between virtual video consultations or in-person visits with our network of providers.</p>
+                    </div>
+                    <div class="app-feature patient-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <h3>Ambulance Request</h3>
+                        <p>Emergency services at your fingertips with GPS tracking and estimated arrival times.</p>
+                    </div>
+                    <div class="app-feature patient-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h3>Pharmaceutical Requests</h3>
+                        <p>Order prescription medications and have them delivered to your preferred location.</p>
+                    </div>
+                    <div class="app-feature patient-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Secure Payments</h3>
+                        <p>Multiple payment options with end-to-end encryption for all transactions.</p>
+                    </div>
+                    <div class="app-feature patient-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <h3>Medical History</h3>
+                        <p>Centralized access to your complete health records from all providers.</p>
+                    </div>
+                </div>
+                
+                <div class="dual-mockup">
+                    <div class="phone-mockup-container">
+                        <div class="phone-mockup patient-mockup">
+                            <div class="screen">
+                                <div class="screenshot-carousel">
+                                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Patient Dashboard" class="screenshot active">
+                                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Patient Consultation" class="screenshot">
+                                    <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1582&q=80" alt="Patient Profile" class="screenshot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="app-content doctor-content">
+                <div class="app-features">
+                    <div class="app-feature doctor-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Instant Video Consultations</h3>
+                        <p>High-definition video calls with patients, with integrated medical tools and diagnostics.</p>
+                    </div>
+                    <div class="app-feature doctor-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Secure Messaging</h3>
+                        <p>HIPAA-compliant messaging system for continuous patient communication.</p>
+                    </div>
+                    <div class="app-feature doctor-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-prescription-bottle-alt"></i>
+                        </div>
+                        <h3>Prescription Management</h3>
+                        <p>Digital prescriptions with automatic refill reminders and pharmacy integration.</p>
+                    </div>
+                    <div class="app-feature doctor-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-file-medical-alt"></i>
+                        </div>
+                        <h3>Health Records Access</h3>
+                        <p>Comprehensive patient records with analytics and historical data visualization.</p>
+                    </div>
+                    <div class="app-feature doctor-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Smart Scheduling</h3>
+                        <p>Intelligent appointment system with automated reminders and follow-ups.</p>
+                    </div>
+                    <div class="app-feature doctor-feature">
+                        <div class="app-feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Practice Analytics</h3>
+                        <p>Detailed insights into your practice performance and patient outcomes.</p>
+                    </div>
+                </div>
+                
+                <div class="dual-mockup">
+                    <div class="phone-mockup-container">
+                        <div class="phone-mockup doctor-mockup">
+                            <div class="screen">
+                                <div class="screenshot-carousel">
+                                    <img src="./dashboard.jpg" alt="Doctor Dashboard" class="screenshot active">
+                                    <img src="./consultation.jpg" alt="Doctor Consultation" class="screenshot">
+                                    <img src="./profile.jpg" alt="Doctor Records" class="screenshot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="section" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Exceptional Care, Exceptional Features</h2>
-                <p>Fast-Care combines cutting-edge technology with compassionate healthcare to deliver an unparalleled patient experience</p>
+                <h2>Why Choose Fast-Care?</h2>
+                <p>Our platform is designed to address the unique needs of both patients and healthcare providers</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card glass">
                     <div class="feature-icon">
-                        <i class="fas fa-video"></i>
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Instant Video Consultations</h3>
-                    <p>High-definition video calls with board-certified physicians in minutes, not hours. Our average wait time is under 5 minutes.</p>
+                    <h3>24/7 Availability</h3>
+                    <p>Access healthcare professionals anytime, anywhere, with average wait times under 5 minutes for urgent cases.</p>
                 </div>
                 <div class="feature-card glass">
                     <div class="feature-icon">
-                        <i class="fas fa-comment-medical"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Secure Messaging</h3>
-                    <p>HIPAA-compliant messaging with your care team. Get answers to medical questions without scheduling an appointment.</p>
+                    <h3>Military-Grade Security</h3>
+                    <p>End-to-end encryption for all communications and HIPAA-compliant data storage to protect your privacy.</p>
                 </div>
                 <div class="feature-card glass">
                     <div class="feature-icon">
-                        <i class="fas fa-prescription-bottle-alt"></i>
+                        <i class="fas fa-hand-holding-medical"></i>
                     </div>
-                    <h3>Digital Prescriptions</h3>
-                    <p>Get prescriptions sent directly to your preferred pharmacy or delivered to your doorstep with our partner network.</p>
+                    <h3>Comprehensive Care</h3>
+                    <p>From general medicine to specialist consultations, we cover all your healthcare needs in one platform.</p>
                 </div>
                 <div class="feature-card glass">
                     <div class="feature-icon">
-                        <i class="fas fa-file-medical"></i>
+                        <i class="fas fa-money-bill-wave"></i>
                     </div>
-                    <h3>Comprehensive Health Records</h3>
-                    <p>Centralized, encrypted access to your medical history, test results, and treatment plans across all providers.</p>
+                    <h3>Affordable Pricing</h3>
+                    <p>Transparent pricing with options for insurance billing and flexible payment plans for all budgets.</p>
                 </div>
                 <div class="feature-card glass">
                     <div class="feature-icon">
-                        <i class="fas fa-heartbeat"></i>
+                        <i class="fas fa-network-wired"></i>
                     </div>
-                    <h3>Wellness Tracking</h3>
-                    <p>Integrated health metrics tracking with AI-powered insights and personalized recommendations.</p>
+                    <h3>Nationwide Network</h3>
+                    <p>Access to top-rated healthcare providers across the country, with specialty care when you need it.</p>
                 </div>
                 <div class="feature-card glass">
                     <div class="feature-icon">
-                        <i class="fas fa-calendar-star"></i>
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3>Priority Scheduling</h3>
-                    <p>Exclusive access to same-day appointments with top specialists in our premium network.</p>
+                    <h3>Patient-Centered Design</h3>
+                    <p>Intuitive interfaces for all ages and tech levels, making healthcare accessible to everyone.</p>
                 </div>
             </div>
         </div>
@@ -1326,7 +1651,7 @@
     <section class="section testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Trusted by Patients Nationwide</h2>
+                <h2>Trusted by Patients & Doctors</h2>
                 <p>Don't just take our word for it - hear what our community has to say</p>
             </div>
             <div class="testimonial-slider">
@@ -1341,12 +1666,12 @@
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p class="testimonial-text">As an expat, finding quality healthcare was challenging until I discovered Fast-Care. The doctors speak multiple languages and understand international health systems perfectly.</p>
+                    <p class="testimonial-text">As a physician, Fast-Care has transformed my practice. The tools allow me to provide better care while managing my time more efficiently. My patient satisfaction scores have never been higher.</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="James T." class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Tunde O." class="author-avatar">
                         <div class="author-info">
-                            <h4>James T.</h4>
-                            <p>Expatriate, Abuja</p>
+                            <h4>Dr. Tunde O.</h4>
+                            <p>General Practitioner, Abuja</p>
                         </div>
                     </div>
                 </div>
@@ -1360,10 +1685,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">The Fast-Care Doctor app has streamlined my workflow tremendously. I can now see more patients while spending less time on paperwork and more time on actual care.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Dr. Fatima B." class="author-avatar">
+                        <div class="author-info">
+                            <h4>Dr. Fatima B.</h4>
+                            <p>Cardiologist, Kano</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="slider-controls">
                     <div class="slider-dot active" data-slide="0"></div>
                     <div class="slider-dot" data-slide="1"></div>
                     <div class="slider-dot" data-slide="2"></div>
+                    <div class="slider-dot" data-slide="3"></div>
                 </div>
             </div>
         </div>
@@ -1372,8 +1708,8 @@
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <h2>Ready to Experience Premium Healthcare?</h2>
-            <p>Join thousands of patients enjoying convenient, compassionate care on their schedule. Download the Fast-Care app today.</p>
+            <h2>Ready to Transform Healthcare?</h2>
+            <p>Join thousands of patients and doctors enjoying the future of medicine. Download the Fast-Care app today.</p>
             <div class="cta-buttons">
                 <a href="#" class="app-btn">
                     <i class="fab fa-apple app-icon"></i>
@@ -1411,8 +1747,8 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#features">Features</a></li>
+                        <li><a href="#apps">Our Apps</a></li>
                         <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="#">Pricing</a></li>
                     </ul>
@@ -1445,12 +1781,12 @@
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="contact-text">info@healthstation.ng<br>support@fastcare.com</div>
+                        <div class="contact-text">info@fastcare.com<br>support@fastcare.com</div>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Fast-Care by HealthStation. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2023 Fast-Care. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
         </div>
     </footer>
@@ -1533,7 +1869,7 @@
         
         // Animate elements on scroll
         const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.feature-card, .step, .gallery-card');
+            const elements = document.querySelectorAll('.feature-card, .step, .gallery-card, .app-feature');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -1551,6 +1887,7 @@
             const features = document.querySelectorAll('.feature-card');
             const steps = document.querySelectorAll('.step');
             const galleryCards = document.querySelectorAll('.gallery-card');
+            const appFeatures = document.querySelectorAll('.app-feature');
             
             features.forEach((feature, index) => {
                 feature.style.opacity = '0';
@@ -1568,6 +1905,12 @@
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = `opacity 0.6s ease, transform 0.6s ease ${index * 0.1}s`;
+            });
+            
+            appFeatures.forEach((feature, index) => {
+                feature.style.opacity = '0';
+                feature.style.transform = 'translateY(30px)';
+                feature.style.transition = `opacity 0.6s ease, transform 0.6s ease ${index * 0.1}s`;
             });
             
             // Initial check
@@ -1619,6 +1962,28 @@
             card.addEventListener('mouseleave', () => {
                 card.style.transform = '';
                 card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+            });
+        });
+
+        // App tabs functionality
+        const appTabs = document.querySelectorAll('.app-tab');
+        const appContents = document.querySelectorAll('.app-content');
+
+        appTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Update active tab
+                appTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding content
+                appContents.forEach(content => {
+                    content.classList.remove('active');
+                    if(content.classList.contains(`${tabName}-content`)) {
+                        content.classList.add('active');
+                    }
+                });
             });
         });
     </script>
